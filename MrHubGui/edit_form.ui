@@ -399,7 +399,7 @@
   </action>
   <action name="actionUpload_to_MR_HUB">
    <property name="text">
-    <string>Prepare MR-HUB submission...</string>
+    <string>Prepare MR-Hub submission...</string>
    </property>
   </action>
  </widget>

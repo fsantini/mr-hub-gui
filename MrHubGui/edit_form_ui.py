@@ -323,7 +323,7 @@ class Ui_EditFormWindow(object):
         EditFormWindow.setWindowTitle(QCoreApplication.translate("EditFormWindow", u"MainWindow", None))
         self.actionLoad_JSON.setText(QCoreApplication.translate("EditFormWindow", u"Load JSON...", None))
         self.actionSave_JSON.setText(QCoreApplication.translate("EditFormWindow", u"Save JSON...", None))
-        self.actionUpload_to_MR_HUB.setText(QCoreApplication.translate("EditFormWindow", u"Prepare MR-HUB submission...", None))
+        self.actionUpload_to_MR_HUB.setText(QCoreApplication.translate("EditFormWindow", u"Prepare MR-Hub submission...", None))
         self.label.setText(QCoreApplication.translate("EditFormWindow", u"Name:", None))
         self.name_text.setPlaceholderText(QCoreApplication.translate("EditFormWindow", u"Package name", None))
         self.label_2.setText(QCoreApplication.translate("EditFormWindow", u"Category:", None))
