@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EditFormWindow</class>
+ <widget class="QMainWindow" name="EditFormWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1090</width>
+    <height>877</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_5">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QWidget" name="single_fields_widget" native="true">
+        <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Name:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="name_text">
+           <property name="placeholderText">
+            <string>Package name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Category:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Short Description:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Image Filename (remote):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Select image:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Main URL:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>Repo URL:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Principal Developers:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Long description:&lt;/p&gt;&lt;p&gt;(up to 200 words)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>Date added to MR Hub:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Date sofware last updated:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="0">
+          <widget class="QLabel" name="label_12">
+           <property name="text">
+            <string>Citation search string:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLineEdit" name="imageFilename_text"/>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="shortDescription_text"/>
+         </item>
+         <item row="5" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLineEdit" name="imagePath_text">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="imageBrowse_button">
+             <property name="text">
+              <string>Browse...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLineEdit" name="mainURL_text"/>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLineEdit" name="repoURL_text"/>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLineEdit" name="principalDevelopers_text"/>
+         </item>
+         <item row="9" column="1">
+          <widget class="QPlainTextEdit" name="longDescription_text">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>1</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QLineEdit" name="dateAdded_text">
+           <property name="inputMask">
+            <string>9999-99-99</string>
+           </property>
+           <property name="placeholderText">
+            <string>2020-01-01</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="1">
+          <widget class="QLineEdit" name="dateUpdated_text">
+           <property name="inputMask">
+            <string>9999-99-99</string>
+           </property>
+           <property name="placeholderText">
+            <string>YYYY-MM-DD</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="category_box">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <item>
+            <property name="text">
+             <string>Reconstruction</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Data format</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Pulse sequences</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Educational</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Simulation</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Visualization</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Spectroscopy</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Image Processing</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Multipurpose</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="12" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLineEdit" name="citationString_text">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>1</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="placeholderText">
+              <string>DOI or paperID for Semantic Scholar</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="citationTest_button">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="baseSize">
+              <size>
+               <width>1</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Test</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Keywords</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QTableView" name="keywords_table"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QPushButton" name="addKeyword_button">
+               <property name="text">
+                <string>Add</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="removeKeyword_button">
+               <property name="text">
+                <string>Remove</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="title">
+              <string>Extra Resources</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <widget class="QTableView" name="extraResources_Table"/>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <item>
+                 <widget class="QPushButton" name="addExtraResources_button">
+                  <property name="text">
+                   <string>Add</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="removeExtraResources_button">
+                  <property name="text">
+                   <string>Remove</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="title">
+       <string>References</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QTableView" name="reference_table"/>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QPushButton" name="addReference_button">
+           <property name="text">
+            <string>Add</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeReference_button">
+           <property name="text">
+            <string>Remove</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1090</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File...</string>
+    </property>
+    <addaction name="actionLoad_JSON"/>
+    <addaction name="actionSave_JSON"/>
+    <addaction name="separator"/>
+    <addaction name="actionUpload_to_MR_HUB"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLoad_JSON">
+   <property name="text">
+    <string>Load JSON...</string>
+   </property>
+  </action>
+  <action name="actionSave_JSON">
+   <property name="text">
+    <string>Save JSON...</string>
+   </property>
+  </action>
+  <action name="actionUpload_to_MR_HUB">
+   <property name="text">
+    <string>Prepare MR-HUB submission...</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
