@@ -57,7 +57,7 @@ def initialize_github(credentials, new_branch_name, local_dir = None):
     # make a fork
     forked_repo = github_user.create_fork(base_repo)
 
-    return_code, out, err = git(f'clone {github_repo_url(forked_repo)} {settings["LOCAL_DIR"]}')
+    return_code, out, err = git(f'clone {github_repo_url(forked_repo)} "{settings["LOCAL_DIR"]}"')
     if return_code:
         if 'already exists' in err:
             print('Warning: repo already exists')
