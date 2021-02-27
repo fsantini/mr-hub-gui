@@ -1,10 +1,11 @@
+import sys
 import webbrowser
 
 from PySide2.QtGui import QRegExpValidator
 
 from .edit_form_ui import Ui_EditFormWindow
 from .github_credentials_ui import Ui_GithubCredentialsDialog
-from PySide2.QtWidgets import QMainWindow, QHeaderView, QFileDialog, QMessageBox, QDialog, QInputDialog
+from PySide2.QtWidgets import QMainWindow, QHeaderView, QFileDialog, QMessageBox, QDialog, QApplication
 from PySide2.QtCore import QAbstractTableModel, Qt, Slot, QRegExp
 import json
 import requests
@@ -335,3 +336,10 @@ You will need check the changes and confirm the pull request.
 
         if ans == QMessageBox.Yes:
             git_tools.delete_local_repository()
+
+
+def main():
+    app = QApplication(sys.argv)
+    win = EditForm()
+    win.show()
+    sys.exit(app.exec_())
