@@ -1,3 +1,5 @@
+import webbrowser
+
 from PySide2.QtGui import QRegExpValidator
 
 from .edit_form_ui import Ui_EditFormWindow
@@ -6,7 +8,7 @@ from PySide2.QtWidgets import QMainWindow, QHeaderView, QFileDialog, QMessageBox
 from PySide2.QtCore import QAbstractTableModel, Qt, Slot, QRegExp
 import json
 import requests
-from .GitTools import check_git_settings, initialize_github, copy_image, add_package, get_push_command_help
+from .GitTools import GitTools, GitError
 
 
 class GithubCredentialsDialog(QDialog, Ui_GithubCredentialsDialog):
@@ -247,6 +249,15 @@ class EditForm(QMainWindow, Ui_EditFormWindow):
     @Slot()
     def prepare_mr_hub(self):
 
+        output_dict = self.get_output_dict()
+
+        if output_dict['imageFile'] and not self.imagePath_text.text():
+            ans = QMessageBox.warning(self, 'Image missing', 'An image name is specified but no image file is selected! Continue anyway?',
+                                      QMessageBox.Ok, QMessageBox.Cancel)
+            if ans == QMessageBox.Cancel:
+                return
+
+
         ans = QMessageBox.information(self, 'Forking the repo',
 """This will now create a Git repository that needs to be pushed to Github and from which a pull request can be created.
 
@@ -257,19 +268,22 @@ The program will now:
 1) fork the original mr-hub repository into your own Github account;
 2) clone the repository locally;
 3) create a new branch;
-4) perform the required changes.
+4) perform the required changes;
+5) push the new branch to Github;
+6) open the browser to perform the pull request.
 
-You will need to then push the changes to Github and create a pull request yourself. 
+You will need check the changes and confirm the pull request. 
 """, QMessageBox.Ok, QMessageBox.Cancel)
 
         if ans == QMessageBox.Cancel:
             return
 
-        if not check_git_settings():
+        if not GitTools.check_git_settings():
             QMessageBox.critical(self, 'Git error', 'Git Settings error. Either git is unavailable, or the username is not set.\n' +
                                                     'Install git and/or run the following commands:\n' +
                                                     'git config --global user.name <your username>\n' +
                                                     'git config --global user.email <your email>')
+            return
 
         credential_dialog = GithubCredentialsDialog(self)
         credential_dialog.exec_()
@@ -295,17 +309,29 @@ You will need to then push the changes to Github and create a pull request yours
             QMessageBox.critical(self, 'Git error', 'Specify a folder to store the repository')
             return
 
+        git_tools = GitTools(credentials, new_branch, local_folder)
         # initialize the github repo
-        initialize_github(credentials, new_branch, local_folder)
-
-        output_dict = self.get_output_dict()
+        try:
+            git_tools.initialize_github()
+        except GitError as err:
+            QMessageBox.critical(self, 'Git Error', 'Error while initializing the repository: ' + str(err))
+            return
 
         # if an image is specified, add it
         if self.imagePath_text.text() and output_dict['imageFile']:
-            copy_image(self.imagePath_text.text(), output_dict['imageFile'])
+            git_tools.copy_image(self.imagePath_text.text(), output_dict['imageFile'])
 
-        add_package(output_dict)
+        try:
+            git_tools.add_package(output_dict)
+        except GitError as err:
+            QMessageBox.critical(self, 'Git Error', 'Error while modifying the repository: ' + str(err))
+            return
 
-        QMessageBox.information(self, 'All done', 'Git repository modified!\n'+
-                                get_push_command_help() +
-                                '\nFinally, create a pull request from the new branch on github')
+        webbrowser.open(git_tools.github_compare_url())
+
+        ans = QMessageBox.information(self, 'Delete the local repo',
+                                      f'If all went well, you can now delete the local repository.\nWould you like to delete {git_tools.local_dir}?'
+                                      , QMessageBox.Yes, QMessageBox.No)
+
+        if ans == QMessageBox.Yes:
+            git_tools.delete_local_repository()
