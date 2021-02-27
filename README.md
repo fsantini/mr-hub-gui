@@ -7,7 +7,7 @@ This tool generates the required JSON description for MR-Hub, and then helps in 
 
 This tool is written in Python. Version 3.6 or more are required.
 
-In addition to Python, you will also require:
+In addition to Python, you will also need:
 - A Github account.
 - Git installed on your system, and in the path.
 - Git properly configured (with global user.name and user.email variables set).
