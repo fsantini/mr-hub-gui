@@ -262,6 +262,8 @@ class EditForm(QMainWindow, Ui_EditFormWindow):
         image_path, _ = QFileDialog.getOpenFileName(self, caption='Select an image file',
                                                     filter='Image files (*.jpg *.png *.gif *.svg);;All files (*.*)')
         self.imagePath_text.setText(image_path)
+        if not self.imageFilename_text.text():
+            self.imageFilename_text.setText(os.path.basename(image_path))
 
     @Slot()
     def prepare_mr_hub(self):
@@ -270,6 +272,15 @@ class EditForm(QMainWindow, Ui_EditFormWindow):
 
         if output_dict['imageFile'] and not self.imagePath_text.text():
             ans = QMessageBox.warning(self, 'Image missing', 'An image name is specified but no image file is selected! Continue anyway?',
+                                      QMessageBox.Ok, QMessageBox.Cancel)
+            if ans == QMessageBox.Cancel:
+                return
+
+        _, imageFile_ext = os.path.splitext(output_dict['imageFile'])
+        _, imagePath_ext = os.path.splitext(self.imagePath_text.text())
+        if imagePath_ext and imageFile_ext != imagePath_ext:
+            ans = QMessageBox.warning(self, 'Image format',
+                                      'The image name and the image to upload have different extensions! Continue anyway?',
                                       QMessageBox.Ok, QMessageBox.Cancel)
             if ans == QMessageBox.Cancel:
                 return
