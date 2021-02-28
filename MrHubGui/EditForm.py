@@ -1,3 +1,4 @@
+import os
 import sys
 import webbrowser
 
@@ -9,7 +10,8 @@ from PySide2.QtWidgets import QMainWindow, QHeaderView, QFileDialog, QMessageBox
 from PySide2.QtCore import QAbstractTableModel, Qt, Slot, QRegExp
 import json
 import requests
-from .GitTools import GitTools, GitError
+from .GitTools import GitTools, GitError, DEFAULT_LOCAL_DIR
+from datetime import datetime
 
 
 class GithubCredentialsDialog(QDialog, Ui_GithubCredentialsDialog):
@@ -30,6 +32,9 @@ class GithubCredentialsDialog(QDialog, Ui_GithubCredentialsDialog):
         self.branch = None
 
         self.setModal(True)
+
+    def set_folder(self, folder):
+        self.localFolder_text.setText(folder)
 
     def browse_folder(self):
         d = QFileDialog.getExistingDirectory(self, 'Select the folder for the local repository')
@@ -135,6 +140,13 @@ class EditForm(QMainWindow, Ui_EditFormWindow):
         self.addExtraResources_button.clicked.connect(self.extraResources_model.appendRow)
         self.removeExtraResources_button.clicked.connect(lambda: table_row_delete(self.extraResources_model, self.extraResources_Table))
 
+        self.dateAdded_text.setText(datetime.now().strftime('%Y-%m-%d'))
+        self.dateUpdated_text.setText(datetime.now().strftime('%Y-%m-%d'))
+        self.longDescription_template = self.longDescription_label.text()
+
+        self.longDescription_text.textChanged.connect(self.update_longDescription_label)
+        self.update_longDescription_label()
+
         self.imageBrowse_button.clicked.connect(self.set_image_path)
 
         self.actionLoad_JSON.triggered.connect(self.loadJSON)
@@ -143,6 +155,10 @@ class EditForm(QMainWindow, Ui_EditFormWindow):
         self.actionUpload_to_MR_HUB.triggered.connect(self.prepare_mr_hub)
 
         self.citationTest_button.clicked.connect(self.test_semantic_scholar)
+
+    def update_longDescription_label(self):
+        n_words = len(self.longDescription_text.toPlainText().split())
+        self.longDescription_label.setText(self.longDescription_template.format(n_words))
 
     def get_output_dict(self):
         def make_keyword_list():
@@ -287,6 +303,7 @@ You will need check the changes and confirm the pull request.
             return
 
         credential_dialog = GithubCredentialsDialog(self)
+        credential_dialog.set_folder(os.path.abspath(DEFAULT_LOCAL_DIR))
         credential_dialog.exec_()
         if not credential_dialog.accepted:
             return

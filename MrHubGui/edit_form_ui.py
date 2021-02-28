@@ -79,10 +79,10 @@ class Ui_EditFormWindow(object):
 
         self.formLayout.setWidget(8, QFormLayout.LabelRole, self.label_8)
 
-        self.label_9 = QLabel(self.single_fields_widget)
-        self.label_9.setObjectName(u"label_9")
+        self.longDescription_label = QLabel(self.single_fields_widget)
+        self.longDescription_label.setObjectName(u"longDescription_label")
 
-        self.formLayout.setWidget(9, QFormLayout.LabelRole, self.label_9)
+        self.formLayout.setWidget(9, QFormLayout.LabelRole, self.longDescription_label)
 
         self.label_10 = QLabel(self.single_fields_widget)
         self.label_10.setObjectName(u"label_10")
@@ -333,11 +333,15 @@ class Ui_EditFormWindow(object):
         self.label_6.setText(QCoreApplication.translate("EditFormWindow", u"Main URL:", None))
         self.label_7.setText(QCoreApplication.translate("EditFormWindow", u"Repo URL:", None))
         self.label_8.setText(QCoreApplication.translate("EditFormWindow", u"Principal Developers:", None))
-        self.label_9.setText(QCoreApplication.translate("EditFormWindow", u"<html><head/><body><p>Long description:</p><p>(up to 200 words)</p></body></html>", None))
+        self.longDescription_label.setText(QCoreApplication.translate("EditFormWindow", u"<html><head/><body><p>Long description:</p><p>({:d}/200 words)</p></body></html>", None))
         self.label_10.setText(QCoreApplication.translate("EditFormWindow", u"Date added to MR Hub:", None))
         self.label_11.setText(QCoreApplication.translate("EditFormWindow", u"Date sofware last updated:", None))
         self.label_12.setText(QCoreApplication.translate("EditFormWindow", u"Citation search string:", None))
+        self.imageFilename_text.setPlaceholderText(QCoreApplication.translate("EditFormWindow", u"your_image.png", None))
+        self.shortDescription_text.setPlaceholderText(QCoreApplication.translate("EditFormWindow", u"One-line description", None))
         self.imageBrowse_button.setText(QCoreApplication.translate("EditFormWindow", u"Browse...", None))
+        self.mainURL_text.setPlaceholderText(QCoreApplication.translate("EditFormWindow", u"https://www.your.website/", None))
+        self.repoURL_text.setPlaceholderText(QCoreApplication.translate("EditFormWindow", u"https://github.com/developer/repo", None))
         self.dateAdded_text.setInputMask(QCoreApplication.translate("EditFormWindow", u"9999-99-99", None))
         self.dateAdded_text.setPlaceholderText(QCoreApplication.translate("EditFormWindow", u"2020-01-01", None))
         self.dateUpdated_text.setInputMask(QCoreApplication.translate("EditFormWindow", u"9999-99-99", None))

@@ -84,9 +84,9 @@
           </widget>
          </item>
          <item row="9" column="0">
-          <widget class="QLabel" name="label_9">
+          <widget class="QLabel" name="longDescription_label">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Long description:&lt;/p&gt;&lt;p&gt;(up to 200 words)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Long description:&lt;/p&gt;&lt;p&gt;({:d}/200 words)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -112,10 +112,18 @@
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QLineEdit" name="imageFilename_text"/>
+          <widget class="QLineEdit" name="imageFilename_text">
+           <property name="placeholderText">
+            <string>your_image.png</string>
+           </property>
+          </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="shortDescription_text"/>
+          <widget class="QLineEdit" name="shortDescription_text">
+           <property name="placeholderText">
+            <string>One-line description</string>
+           </property>
+          </widget>
          </item>
          <item row="5" column="1">
           <layout class="QHBoxLayout" name="horizontalLayout">
@@ -136,10 +144,18 @@
           </layout>
          </item>
          <item row="6" column="1">
-          <widget class="QLineEdit" name="mainURL_text"/>
+          <widget class="QLineEdit" name="mainURL_text">
+           <property name="placeholderText">
+            <string>https://www.your.website/</string>
+           </property>
+          </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QLineEdit" name="repoURL_text"/>
+          <widget class="QLineEdit" name="repoURL_text">
+           <property name="placeholderText">
+            <string>https://github.com/developer/repo</string>
+           </property>
+          </widget>
          </item>
          <item row="8" column="1">
           <widget class="QLineEdit" name="principalDevelopers_text"/>
