@@ -351,9 +351,9 @@ class Ui_EditFormWindow(object):
         self.category_box.setItemText(2, QCoreApplication.translate("EditFormWindow", u"Pulse sequences", None))
         self.category_box.setItemText(3, QCoreApplication.translate("EditFormWindow", u"Educational", None))
         self.category_box.setItemText(4, QCoreApplication.translate("EditFormWindow", u"Simulation", None))
-        self.category_box.setItemText(5, QCoreApplication.translate("EditFormWindow", u"Visualization", None))
+        self.category_box.setItemText(5, QCoreApplication.translate("EditFormWindow", u"Visualisation", None))
         self.category_box.setItemText(6, QCoreApplication.translate("EditFormWindow", u"Spectroscopy", None))
-        self.category_box.setItemText(7, QCoreApplication.translate("EditFormWindow", u"Image Processing", None))
+        self.category_box.setItemText(7, QCoreApplication.translate("EditFormWindow", u"Image processing", None))
         self.category_box.setItemText(8, QCoreApplication.translate("EditFormWindow", u"Multipurpose", None))
 
         self.citationString_text.setPlaceholderText(QCoreApplication.translate("EditFormWindow", u"DOI or paperID for Semantic Scholar", None))
